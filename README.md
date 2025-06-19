@@ -1,2 +1,2 @@
-Mulaka vishnu vardhan reddy
-inkollu,krishna nagar
+#Mulaka vishnu vardhan reddy
+##inkollu,krishna nagar
