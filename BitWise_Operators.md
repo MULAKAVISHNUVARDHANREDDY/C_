@@ -207,3 +207,234 @@ int main()
     return 0;
 }
 ```
+11.Program to check if number is power of 2.
+```
+#include<stdio.h>
+int ispower2(int num)
+{
+    return (num>0)&&((num&(num-1))==0);
+}
+int main()
+{
+    int num;
+    printf("Enter a number: ");
+    scanf("%d",&num);
+    if(ispower2(num))                               
+    {
+        printf("%d is power of 2\n",num);
+    }
+    else{
+        printf("%d is Not power of 2\n",num);
+    }
+    return 0;
+}
+```
+12.Program to Convert little endian to bigendian.
+```
+#include<stdio.h>
+unsigned int convertendian(unsigned int num)
+{
+    return ((num & 0x000000FF)<<24)|
+            ((num & 0x0000FF00)<<8)|
+            ((num & 0x00FF0000)>>8)|
+            ((num & 0xFF000000)>>24);
+}
+int main()
+{
+    unsigned int num;
+    printf("Enter a 32 bit number in hexadicimal format: ");
+    scanf("%x",&num);
+    unsigned int convertedNUM=convertendian(num);
+    printf("Big-endian representation:0x%x\n",convertedNUM);
+}
+```
+13.Program to Convert uppercase Alphabets to lowercase.
+```
+#include<stdio.h>
+void uppertolower(char *str)
+{
+    for(int i=0;str[i]!='\0';i++)
+    {
+        if(str[i]>='A' && str[i]<='Z')
+        {
+            str[i]|=' ';
+        }
+    }
+}
+int main()
+{
+    char text[]="HELLO WORLD! BITWISE OPERATORS ARE COOL.";
+    printf("Original: %s\n",text);
+    uppertolower(text);
+    printf("Lower case: %s\n",text);
+    return 0;
+}
+```
+14.Program to Convert Lowercase Alphabets to uppercase.
+```
+#include<stdio.h>
+void lowertoupper(char *str)
+{
+    for(int i=0;str[i]!='\0';i++)
+    {
+        if(str[i]>='a' && str[i]<='z')
+        {
+            str[i]&='_';
+        }
+    }
+}
+int main()
+{
+    char vis[]="mulaka vishnu vardhan reddy";
+    printf("Original: %s\n",vis);
+    lowertoupper(vis);
+    printf("Lower case: %s\n",vis);
+    return 0;
+}
+```
+15.Program to Inverts Alphabets Case
+```
+#include<stdio.h>
+void toggle(char *str)
+{
+    for(int i=0;str[i]!='\0';i++)
+    {
+        if(str[i]>='A' && str[i]<='Z' || str[i]>='a' && str[i]<='z')
+        {
+            str[i]^=' ';
+        }
+    }
+}
+int main()
+{
+    char vis[]="VishnuVARDHANrEdDy";
+    printf("Original: %s\n",vis);
+    toggle(vis);
+    printf("Lower case: %s\n",vis);
+}
+```
+16.Program to find letter poisiton in an alphabet.
+```
+#include<stdio.h>
+void findletter(char letter)
+{
+    if((letter>='A' && letter<='Z'))
+    {
+        printf("position of '%c'in alphabet: %d\n",letter,letter-'A'+1);
+    }
+    else if((letter>='a' && letter<='z'))
+    {
+        printf("position of '%c' in alphabet: %d\n",letter,letter-'a'+1);
+    }
+    else{
+        printf("'%c' is not an alphabet letter.\n",letter);
+    }
+}
+int main()
+{
+    char letter;
+    printf("Enter a letter: ");
+    scanf("%c",&letter);
+    findletter(letter);
+    return 0;
+}
+```
+17.Program to count setbits in number.
+```
+#include<stdio.h>
+int countsetbits(unsigned int n)
+{
+    int count=0;
+    while(n)
+    {
+        count+=n&1;
+        n>>=1;
+    }
+    return count;
+}
+int main()
+{
+    unsigned int num;
+    printf("Enter a number; ");
+    scanf("%u",&num);
+    printf("Number  of sets bits: %d\n",countsetbits(num));
+    return 0;
+}
+```
+18.Program for addition method for swapping the two variables without using a third variable.
+```
+#include<stdio.h>
+int main()
+{
+    int a=5,y=10;
+    printf("Before swapping: a=%d,y=%d\n",a,y);
+    a=a+y;
+    y=a-y;
+    a=a-y;
+    printf("After swapping: a=%d, y=%d\n",a,y);
+    return 0;
+}
+                   or                          
+// swap two variables without third variable using XOR.
+#include<stdio.h>
+int main()
+{
+    int a=5,y=10;
+    printf("Before swapping:a= %d,b=%d\n",a,y);
+    a=a^y;
+    y=a^y;
+    a=a^y;
+    printf("After Swapping: a=%d,y=%d\n",a,y);
+    return 0;
+}
+```
+19. Program to convert a Binary to Decimal.
+```
+#include<stdio.h>
+#include<string.h>
+int binarytodecimal(const char *binary)
+{
+    int decimal=0;
+    int length=strlen(binary);
+    int base=1;
+    for(int i=length-1;i>=0;i--)
+    {
+        if(binary[i]=='1')
+        {
+            decimal+=base;
+        }
+        base*=2;
+    }
+    return decimal;
+}
+int main()
+{
+    char binary[32];
+    printf("Enter a binary number: ");
+    scanf("%s",binary);
+    printf("Decimal equivalent: %d\n",binarytodecimal(binary));
+    return 0;
+}
+```
+20.Program to swap evenoddbits.
+```
+#include<stdio.h>
+unsigned int swapevenoddbits(unsigned int num)
+{
+    unsigned int even_bits=num& 0xAAAAAAAA;
+    unsigned int odd_bits=num& 0x55555555;
+    even_bits>>=1;
+    odd_bits<<=1;
+    return (even_bits|odd_bits);
+}
+int main()
+{
+    unsigned int num;
+    printf("Enter the number:");
+    scanf("%d",&num);
+    unsigned int result=swapevenoddbits(num);
+    printf("original number: %u\n",num);
+    printf("Swapped number: %u\n",result);
+    return 0;
+}
+```
