@@ -1,4 +1,4 @@
-# BIIWISE OPERATORS
+# BITWISE OPERATORS
 ## QUESTIONS AND ANSWERS
 1.program to set ith bit of a number.
 ```
